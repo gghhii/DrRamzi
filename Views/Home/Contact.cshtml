@@ -1,0 +1,779 @@
+@{
+    ViewData["Title"] = "Contact - Dr Ramzi Moatemri";
+}
+
+
+<section id="hero" class="diorama-hero-reversed">
+    <div class="diorama-ambient">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-grid"></div>
+    </div>
+
+    <div class="diorama-container">
+        <!-- Large Background Signature -->
+        <div class="diorama-signature">CONTACT</div>
+
+        <div class="diorama-stage-reversed">
+            <!-- Left Side: Narrative Content -->
+            <div class="stage-content-left reveal-on-scroll">
+                <div class="content-clean-block">
+                    <header class="content-header">
+                        <span class="h-line"></span>
+                        <span class="h-tag">SYSTEM: CONTACT</span>
+                    </header>
+                    
+                    <h1 class="diorama-title">
+                        INTERACTION <br>
+                        <span class="italic-accent">CLINIQUE</span>
+                    </h1>
+
+                    <div class="diorama-description">
+                        <p>Initiez votre transformation. Notre équipe est prête à vous guider à travers nos protocoles esthétiques d'excellence à l'Immeuble Misk Elil.</p>
+                    </div>
+
+                    <div class="diorama-actions">
+                        <a href="#form" class="btn-diorama">
+                            <span class="btn-text">PRENDRE CONTACT</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Image Layer -->
+            <div class="stage-visual-wrap-right reveal-on-scroll">
+                <img src="/images/i5.png" alt="Contact Architecture" class="stage-img">
+                <div class="stage-scan-line"></div>
+                <div class="stage-frame-corners"></div>
+
+                <!-- CLINICAL ECG SIGNAL ANIMATION -->
+                <div class="clinical-ecg-overlay">
+                    <svg viewBox="0 0 800 100" preserveAspectRatio="none" class="ecg-svg">
+                        <polyline points="0,50 350,50 365,20 380,80 395,20 410,50 800,50" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+                        <polyline points="0,50 350,50 365,20 380,80 395,20 410,50 800,50" fill="none" stroke="var(--color-gold)" stroke-width="8" opacity="0.6" style="filter: blur(4px);" class="ecg-trace" />
+                        <polyline points="0,50 350,50 365,20 380,80 395,20 410,50 800,50" fill="none" stroke="#ffffff" stroke-width="3" class="ecg-trace-core" />
+                    </svg>
+                </div>
+
+                <!-- HUD Data Points on Image -->
+                <div class="floating-data d-top" style="top: 15%; right: 10%;">
+                    <div class="d-dot"></div>
+                    <div class="d-info">
+                        <span class="d-label">LAT</span>
+                        <span class="d-val">35.8450</span>
+                    </div>
+                </div>
+                <div class="floating-data d-bottom" style="bottom: 15%; left: 10%;">
+                    <div class="d-dot"></div>
+                    <div class="d-info">
+                        <span class="d-label">LNG</span>
+                        <span class="d-val">10.6116</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN CONTACT BODY -->
+</section>
+
+<!-- MAIN CONTACT BODY -->
+<section id="form" class="contact-body section-padding section-paper">
+    <div class="contact-body-container">
+        <div class="contact-body-grid">
+
+            <!-- LEFT: FORM -->
+            <div class="contact-form-panel reveal-on-scroll">
+                <div class="panel-heading">
+                    <span class="panel-label">FORMULAIRE</span>
+                    <h2 class="panel-title">Réserver une Consultation</h2>
+                    <p class="panel-desc">Remplissez ce formulaire et notre équipe vous contactera sous 24h pour confirmer votre rendez-vous.</p>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row-2">
+                        <div class="cf-group">
+                            <label class="cf-label" for="fullName">Nom Complet</label>
+                            <input class="cf-input" type="text" id="fullName" placeholder="Dr. / M. / Mme..." required />
+                        </div>
+                        <div class="cf-group">
+                            <label class="cf-label" for="phone">Téléphone</label>
+                            <input class="cf-input" type="tel" id="phone" placeholder="+216 xx xxx xxx" />
+                        </div>
+                    </div>
+
+                    <div class="cf-group">
+                        <label class="cf-label" for="email">Adresse Email</label>
+                        <input class="cf-input" type="email" id="email" placeholder="vous@email.com" required />
+                    </div>
+
+                    <div class="cf-group">
+                        <label class="cf-label" for="service">Soin d'Intérêt</label>
+                        <select class="cf-input" id="service">
+                            <option value="">Choisir un protocole...</option>
+                            <option>Injections & Sculpture Faciale</option>
+                            <option>Laser Fractionné & Resurfacing</option>
+                            <option>Épilation Laser</option>
+                            <option>Traitement de la Chute de Cheveux</option>
+                            <option>Peeling Chimique</option>
+                            <option>Hydrafacial MD</option>
+                            <option>Dermatologie Générale</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="cf-group">
+                        <label class="cf-label" for="message">Votre Message</label>
+                        <textarea class="cf-input cf-textarea" id="message" rows="5" placeholder="Décrivez brièvement vos objectifs esthétiques..."></textarea>
+                    </div>
+
+                    <button type="submit" class="cf-submit-btn">
+                        <span>ENVOYER MA DEMANDE</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- RIGHT: INFO -->
+            <div id="info" class="contact-info-panel reveal-on-scroll" style="transition-delay:0.2s;">
+
+                <!-- Clinic Card -->
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="info-card-body">
+                        <span class="info-card-label">ADRESSE</span>
+                        <h3 class="info-card-title">Dr Ramzi Moatemri</h3>
+                        <p class="info-card-text">Immeuble Misk Elil<br>4ème Étage, Bureau N°42<br>Khézama Est, Sousse, Tunisie</p>
+                        <a href="https://maps.app.goo.gl/YourNewMapLink" target="_blank" class="info-card-link">
+                            Ouvrir dans Google Maps →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Phone Card -->
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.13 2.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.46-.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div class="info-card-body">
+                        <span class="info-card-label">TÉLÉPHONE</span>
+                        <h3 class="info-card-title">+216 98 643 807</h3>
+                        <p class="info-card-text">Disponible Lun–Ven, 09:00–18:00<br>Sam: 09:00–13:00</p>
+                    </div>
+                </div>
+
+                <!-- Email Card -->
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="info-card-body">
+                        <span class="info-card-label">EMAIL</span>
+                        <h3 class="info-card-title">moatemri_ramzi@yahoo.fr</h3>
+                        <p class="info-card-text">Réponse garantie sous 24h ouvrables</p>
+                    </div>
+                </div>
+
+                <!-- Hours -->
+                <div class="info-hours">
+                    <span class="info-card-label">HORAIRES D'OUVERTURE</span>
+                    <div class="hours-grid">
+                        <div class="hours-row">
+                            <span>Lundi – Vendredi</span>
+                            <span class="hours-time">09:00 – 18:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Samedi</span>
+                            <span class="hours-time">09:00 – 13:00</span>
+                        </div>
+                        <div class="hours-row hours-closed">
+                            <span>Dimanche</span>
+                            <span class="hours-time">Fermé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div class="info-social">
+                    <a href="#" class="social-pill">Instagram</a>
+                    <a href="#" class="social-pill">Facebook</a>
+                    <a href="#" class="social-pill">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FULL-WIDTH MAP -->
+</section>
+
+<!-- FULL-WIDTH MAP -->
+<section id="map" class="contact-map-section section-paper">
+    <div class="map-header reveal-on-scroll">
+        <span class="map-label">LOCALISATION</span>
+        <h2 class="map-title">Nous Trouver</h2>
+    </div>
+    <div class="map-wrapper">
+        <iframe
+            src="https://maps.google.com/maps?q=Cabinet+Professeur+Ramzi+Moatemri+Immeuble+Misk+Elil+Sousse&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="500"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Cabinet Professeur Ramzi Moatemri - Immeuble Misk Elil">
+        </iframe>
+        <div class="map-overlay-badge">
+            <div class="map-badge-dot"></div>
+            <div>
+                <strong>Cabinet Professeur Ramzi Moatemri</strong>
+                <span>Immeuble Misk Elil, Bureau 42, Khézama Est</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="monolith-footer">
+    <div class="mf-background-text">DR. MOATEMRI</div>
+    
+    <div class="mf-container">
+        <div class="mf-main reveal-on-scroll">
+            <div class="mf-brand">
+                <div class="mf-logo-wrap">
+                    <span class="mf-logo">DR RAMZI MOATEMRI</span>
+                    <span class="mf-tagline">CHIRURGIEN MAXILLO-FACIAL ET ESTHÉTIQUE</span>
+                </div>
+                <div class="mf-info-grid">
+                    <div class="mf-info-block">
+                        <span class="mf-label">LOCALISATION</span>
+                        <p>Immeuble Misk Elil<br>4ème Étage, Bureau N°42<br>Khézama Est, Sousse</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">CONTACT DIRECT</span>
+                        <p>T. +216 98 643 807<br>E. moatemri_ramzi@yahoo.fr</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">HORAIRES</span>
+                        <p>LUN — VEN : 09H - 18H<br>SAM : 09H - 13H</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="mf-nav-grid">
+                <div class="mf-nav-col">
+                    <span class="mf-label">EXPLORATION</span>
+                    <ul class="mf-list">
+                        <li><a href="/Home/About">LE DOCTEUR</a></li>
+                        <li><a href="/#traitements">COLLECTIONS</a></li>
+                        <li><a href="/Home/Results">RÉSULTATS</a></li>
+                        <li><a href="/#expertise">EXPERTISE</a></li>
+                        <li><a asp-controller="Home" asp-action="Journal">JOURNAL SCIENTIFIQUE</a></li>
+                    </ul>
+                </div>
+                <div class="mf-nav-col">
+                    <span class="mf-label">SUIVRE</span>
+                    <ul class="mf-list">
+                        <li><a href="#">INSTAGRAM</a></li>
+                        <li><a href="#">FACEBOOK</a></li>
+                        <li><a href="#">LINKEDIN</a></li>
+                        <li><a href="#">TIKTOK</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="mf-bottom reveal-on-scroll">
+            <div class="mf-legal">
+                <span>© 2026 DR RAMZI MOATEMRI</span>
+                <span class="mf-divider"></span>
+                <span>DESIGN PAR RADIANCE EDITORIAL</span>
+            </div>
+            <div class="mf-management">DIRECTION MÉDICALE : DR RAMZI MOATEMRI</div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* ===== DIORAMA HERO REVERSED (RESULTS STYLE) ===== */
+    .diorama-hero-reversed {
+        height: 100vh;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 120px;
+    }
+
+    .diorama-ambient { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .ambient-orb { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); border-radius: 50%; filter: blur(80px); }
+    .orb-1 { top: -10%; left: -10%; }
+    .orb-2 { bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%); }
+    .ambient-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 100px 100px; mask-image: radial-gradient(circle at center, black, transparent 80%); }
+
+    .diorama-container { width: 100%; max-width: 1600px; padding: 0 5%; position: relative; z-index: 10; }
+    .diorama-signature { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-serif); font-size: 25vw; color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; letter-spacing: -0.05em; z-index: 0; }
+    
+    .diorama-stage-reversed { display: flex; flex-direction: row; align-items: center; position: relative; height: 600px; gap: 10%; }
+    .stage-content-left { position: relative; z-index: 20; width: 30%; }
+    .content-header { display: flex; align-items: center; gap: 15px; margin-bottom: 2.5rem; }
+    .h-line { width: 30px; height: 1px; background: var(--color-gold); }
+    .h-tag { font-size: 0.55rem; letter-spacing: 0.4em; color: rgba(255,255,255,0.5); font-weight: 700; }
+    
+    .diorama-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 4vw, 4.5rem); line-height: 0.9; margin-bottom: 2.5rem; color: #fff; text-transform: uppercase; }
+    .diorama-title .italic-accent { font-style: italic; color: #fff; font-weight: 300; opacity: 0.9; }
+    .diorama-description { margin-bottom: 3.5rem; max-width: 500px; }
+    .diorama-description p { font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+    .stage-visual-wrap-right { position: relative; width: 60%; height: 100%; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+    .stage-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); transition: transform 2s var(--ease-aesthetic); }
+    .stage-visual-wrap-right:hover .stage-img { transform: scale(1.05); }
+
+    .btn-diorama { display: inline-flex; align-items: center; gap: 20px; padding: 1.2rem 2.5rem; background: #fff; color: #000; text-decoration: none; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; transition: all 0.4s var(--ease-aesthetic); }
+    .btn-diorama:hover { background: var(--color-gold); transform: translateY(-5px); }
+
+    /* Clinical ECG Overlay */
+    .clinical-ecg-overlay { position: absolute; bottom: 30%; left: 0; width: 100%; height: 80px; z-index: 25; pointer-events: none; overflow: visible; background: linear-gradient(90deg, transparent, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 70%, transparent); }
+    .ecg-svg { width: 100%; height: 100%; }
+    .ecg-trace, .ecg-trace-core { stroke-dasharray: 200 1500; stroke-dashoffset: 1700; animation: ecgSweep 4.5s linear infinite; }
+    .ecg-trace-core { filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px var(--color-gold)); }
+    @@keyframes ecgSweep { to { stroke-dashoffset: 0; } }
+
+    /* Floating Data */
+    .floating-data { position: absolute; display: flex; align-items: center; gap: 15px; z-index: 30; }
+    .d-dot { width: 8px; height: 8px; background: #fff; border-radius: 50%; box-shadow: 0 0 15px #fff; animation: pulseData 2s infinite; }
+    @@keyframes pulseData { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+    .d-info { display: flex; flex-direction: column; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); padding: 10px 15px; border: 1px solid rgba(255,255,255,0.1); }
+    .d-label { font-size: 0.5rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 2px; }
+    .d-val { font-size: 0.8rem; font-weight: 700; color: #fff; }
+
+    /* ===== CONTACT BODY ===== */
+    .contact-body {
+        background: #f9f9f9;
+    }
+
+    .contact-body-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 3rem;
+    }
+
+    .contact-body-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 80px;
+        align-items: start;
+    }
+
+    /* --- FORM PANEL --- */
+    .contact-form-panel {
+        background: #fff;
+        padding: 4rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+        border: 1px solid #efefef;
+    }
+
+    .panel-heading {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .panel-label {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.4em;
+        color: var(--color-gold);
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .panel-title {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        color: #000;
+        margin-bottom: 0.75rem;
+        font-weight: 400;
+    }
+
+    .panel-desc {
+        font-size: 0.9rem;
+        color: #777;
+        line-height: 1.7;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .form-row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .cf-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .cf-label {
+        font-family: var(--font-mono);
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        color: #999;
+        text-transform: uppercase;
+    }
+
+    .cf-input {
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 0;
+        padding: 14px 16px;
+        color: #000;
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        width: 100%;
+        appearance: none;
+    }
+
+    .cf-input:focus {
+        outline: none;
+        border-color: var(--color-gold);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255,0.1);
+    }
+
+    .cf-textarea {
+        resize: vertical;
+        min-height: 130px;
+    }
+
+    .cf-submit-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: #000;
+        color: #fff;
+        border: none;
+        padding: 1.2rem 2.5rem;
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        cursor: pointer;
+        transition: 0.4s;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .cf-submit-btn:hover {
+        background: var(--color-gold);
+        color: #000;
+    }
+
+    /* --- INFO PANEL --- */
+    .contact-info-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .info-card {
+        background: #fff;
+        border: 1px solid #efefef;
+        padding: 28px 30px;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        transition: 0.4s;
+    }
+
+    .info-card:hover {
+        border-color: var(--color-gold);
+        box-shadow: 0 10px 30px rgba(255, 255, 255,0.08);
+    }
+
+    .info-card-icon {
+        width: 44px;
+        height: 44px;
+        background: #fdf9f4;
+        border: 1px solid rgba(255, 255, 255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--color-gold);
+    }
+
+    .info-card-label {
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 0.3em;
+        color: var(--color-gold);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .info-card-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 6px;
+    }
+
+    .info-card-text {
+        font-size: 0.85rem;
+        color: #777;
+        line-height: 1.7;
+        margin-bottom: 10px;
+    }
+
+    .info-card-link {
+        font-size: 0.7rem;
+        color: var(--color-gold);
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        transition: 0.3s;
+    }
+
+    .info-card-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Hours */
+    .info-hours {
+        background: #fff;
+        border: 1px solid #efefef;
+        padding: 28px 30px;
+    }
+
+    .hours-grid {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .hours-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f5f5f5;
+        font-size: 0.88rem;
+        color: #333;
+    }
+
+    .hours-row:last-child {
+        border-bottom: none;
+    }
+
+    .hours-time {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: #000;
+        font-weight: 600;
+    }
+
+    .hours-closed {
+        color: #bbb;
+    }
+
+    .hours-closed .hours-time {
+        color: #bbb;
+    }
+
+    /* Social Pills */
+    .info-social {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .social-pill {
+        border: 1px solid #e0e0e0;
+        color: #555;
+        padding: 8px 18px;
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+
+    .social-pill:hover {
+        border-color: var(--color-gold);
+        color: var(--color-gold);
+        background: rgba(255, 255, 255,0.05);
+    }
+
+    /* ===== MAP SECTION ===== */
+    .contact-map-section {
+        background: #fff;
+        padding-top: 5rem;
+    }
+
+    .map-header {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 3rem 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .map-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.5em;
+        color: var(--color-gold);
+        font-weight: 700;
+    }
+
+    .map-title {
+        font-family: var(--font-serif);
+        font-size: 2.2rem;
+        color: #000;
+        font-weight: 400;
+    }
+
+    .map-wrapper {
+        position: relative;
+        width: 100%;
+        border-top: 3px solid var(--color-gold);
+    }
+
+    .map-wrapper iframe {
+        display: block;
+    }
+
+    .map-overlay-badge {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        background: #fff;
+        border: 1px solid #efefef;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        z-index: 10;
+    }
+
+    .map-badge-dot {
+        width: 12px;
+        height: 12px;
+        background: var(--color-gold);
+        border-radius: 50%;
+        flex-shrink: 0;
+        animation: mapPulse 2s infinite;
+    }
+
+    @@keyframes mapPulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    .map-overlay-badge strong {
+        display: block;
+        font-size: 0.9rem;
+        color: #000;
+        margin-bottom: 2px;
+    }
+
+    .map-overlay-badge span {
+        font-size: 0.7rem;
+        color: #888;
+        letter-spacing: 0.05em;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @@media (max-width: 1100px) {
+        .contact-body-grid {
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+    }
+
+    @@media (max-width: 900px) {
+        .contact-hero {
+            grid-template-columns: 1fr;
+            min-height: auto;
+        }
+        .contact-hero-image { display: none; }
+        .contact-hero-inner { padding: 5rem 2rem; }
+        .contact-body-container { padding: 0 1.5rem; }
+        .contact-form-panel { padding: 2.5rem 2rem; }
+        .form-row-2 { grid-template-columns: 1fr; }
+        .map-overlay-badge { display: none; }
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+            // Form feedback
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = form.querySelector('.cf-submit-btn');
+                    
+                    const formData = new FormData();
+                    formData.append('FullName', document.getElementById('fullName').value);
+                    formData.append('Phone', document.getElementById('phone').value);
+                    formData.append('Email', document.getElementById('email').value);
+                    formData.append('Service', document.getElementById('service').value);
+                    formData.append('Message', document.getElementById('message').value);
+
+                    try {
+                        const response = await fetch('/Home/SubmitAppointment', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        if (response.ok) {
+                            btn.style.background = '#2d7a4f';
+                            btn.innerHTML = '<span>✓ DEMANDE ENVOYÉE</span>';
+                            form.reset();
+                            setTimeout(() => {
+                                btn.style.background = '#000';
+                                btn.innerHTML = '<span>ENVOYER MA DEMANDE</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+                            }, 3000);
+                        } else {
+                            alert("Une erreur s'est produite lors de l'envoi de la demande.");
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert("Erreur de connexion.");
+                    }
+                });
+            }
+        });
+    </script>
+}

@@ -1,0 +1,296 @@
+@model IEnumerable<DrAshrafMellouli.Models.Article>
+@{
+    ViewData["Title"] = "Journal & Publications - Dr Ramzi Moatemri";
+}
+
+<style>
+    /* NOIR OVERRIDE FOR JOURNAL */
+    #articles.kinetic-journal {
+        background: #000000 !important;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        position: relative;
+        z-index: 1;
+        padding: 12rem 5% !important;
+    }
+
+    .journal-white-theme .kj-header {
+        background: #000000 !important;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 8rem;
+        text-align: center;
+    }
+
+    .journal-white-theme .kj-main-title {
+        color: #ffffff !important;
+        font-family: var(--font-serif);
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        line-height: 1;
+    }
+
+    .journal-white-theme .kj-eyebrow {
+        color: var(--color-gold) !important;
+        letter-spacing: 0.5em;
+        font-size: 0.7rem;
+        font-weight: 800;
+        display: block;
+        margin-bottom: 2rem;
+    }
+
+    /* ===== HERO STYLES ===== */
+    .treatment-clinical-split {
+        height: 100vh;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .clinical-split-sculpture { flex: 1; display: flex; width: 100%; }
+    .clinical-data-column { flex: 0.8; padding: 10% 5% 5% 8%; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 10; }
+    .data-badge { font-size: 0.6rem; letter-spacing: 0.4em; color: var(--color-gold); margin-bottom: 2.5rem; font-weight: 800; }
+    .data-readout { display: flex; gap: 30px; margin-bottom: 3rem; }
+    .data-readout span { font-size: 0.5rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); text-transform: uppercase; }
+    .clinical-title { font-family: var(--font-serif); font-size: clamp(3.5rem, 8vw, 6.5rem); color: #fff; line-height: 0.95; margin-bottom: 3rem; text-transform: uppercase; }
+    .gold-italic { font-style: italic; color: var(--color-gold); display: block; margin-top: 10px; }
+    .clinical-lead { max-width: 500px; font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.6); font-weight: 300; }
+    .clinical-visual-column { flex: 1.4; position: relative; overflow: hidden; }
+    .clinical-portrait-img { width: 100%; height: 100%; object-fit: cover; object-position: center left; transform: scale(1.4); filter: grayscale(0.2) contrast(1.1); }
+    .heart-pulse-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 5; opacity: 0.9; }
+    .heart-pulse-overlay svg { width: 100%; height: 150px; }
+    .heart-path { fill: none; stroke: var(--color-gold); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2000; stroke-dashoffset: 2000; filter: drop-shadow(0 0 8px var(--color-gold)); animation: heartBeat 3s linear infinite; }
+    @@keyframes heartBeat { 0% { stroke-dashoffset: 2000; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -2000; } }
+
+    /* ===== JOURNAL CARDS: NOIR & BLANC SIGNATURE ===== */
+    .journal-white-theme .kj-panel { background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    .journal-white-theme .kj-bg { 
+        filter: grayscale(1) brightness(0.4) !important; 
+        transition: filter 0.8s ease, transform 1.2s ease !important;
+    }
+    .journal-white-theme .kj-panel:hover .kj-bg {
+        filter: grayscale(0.2) brightness(0.6) !important;
+        transform: scale(1.05);
+    }
+    .journal-white-theme .kj-overlay {
+        background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.9)) !important;
+        opacity: 0.8 !important;
+    }
+    .journal-white-theme .kj-panel:hover .kj-overlay {
+        opacity: 0.4 !important;
+    }
+
+    .journal-white-theme .kj-title { 
+        color: #fff !important; 
+        text-shadow: 0 4px 15px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5) !important; 
+        font-weight: 700 !important;
+    }
+    .journal-white-theme .kj-desc { 
+        color: rgba(255,255,255,0.95) !important; 
+        text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;
+        font-weight: 400 !important;
+    }
+    .journal-white-theme .kj-link { 
+        color: var(--color-gold) !important; 
+        border-color: var(--color-gold) !important; 
+        text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    .journal-white-theme .kj-num, .journal-white-theme .kj-cat {
+        text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    /* ===== EMPTY STATE ===== */
+    .empty-journal-state h3 { color: #ffffff !important; }
+    .empty-journal-state p { color: rgba(255,255,255,0.6) !important; }
+    .empty-journal-state .luxury-pill-btn { border-color: #ffffff; color: #ffffff; }
+    .empty-journal-state .luxury-pill-btn:hover { background: #ffffff; color: #000000; }
+    .empty-journal-state { text-align: center; padding: 10rem 0; }
+    .empty-ornament { width: 60px; height: 1px; background: var(--color-gold); margin: 0 auto 3rem; }
+
+    /* ===== CTA ===== */
+    .artistic-cta { position: relative; overflow: hidden; padding: 12rem 5%; background: #000; margin-top: 10rem; }
+    .cta-video-wrap { position: absolute; inset: 0; z-index: 1; }
+    .cta-bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+    .cta-video-overlay { position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%); z-index: 2; }
+    .cta-inner { position: relative; z-index: 10; text-align: center; max-width: 800px; margin: 0 auto; }
+    .cta-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
+    .luxury-pill-btn { display: inline-block; padding: 1.2rem 3.5rem; background: transparent; border: 1px solid #fff; color: #fff; text-decoration: none; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; transition: all 0.4s ease; }
+    .luxury-pill-btn:hover { background: #fff; color: #000; }
+</style>
+
+<section id="hero" class="treatment-clinical-split">
+    <div class="clinical-split-sculpture">
+        <div class="clinical-data-column reveal-on-scroll">
+            <div class="data-badge">PROTOCOLE : SAVOIR</div>
+            <div class="data-readout">
+                <span>INDEX : SCIENTIFIQUE</span>
+                <span>TYPE : ARCHIVES MÉDICALES</span>
+                <span>v3.0.4</span>
+            </div>
+            <h1 class="clinical-title">
+                LE JOURNAL <br>
+                <span class="gold-italic">SCIENTIFIQUE</span>
+            </h1>
+            <p class="clinical-lead">
+                Explorez nos dernières réflexions, innovations technologiques et études de cas cliniques. Une immersion au cœur de l'expertise esthétique.
+            </p>
+            <div class="clinical-abstract-mesh"></div>
+        </div>
+
+        <div class="clinical-visual-column">
+            <img class="clinical-portrait-img" src="/images/i6.png" alt="Journal Hero">
+            <div class="heart-pulse-overlay">
+                <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+                    <path class="heart-path" d="M0,100 L200,100 L220,100 L240,100 L260,100 L280,100 L300,100 L320,100 L340,100 L360,100 L380,100 L400,100 L420,100 L440,80 L450,120 L460,20 L475,180 L490,100 L500,100 L700,100 L1000,100" />
+                </svg>
+            </div>
+            <div class="visual-topo-overlay"></div>
+            <div class="visual-corner-tags">
+                <span>RÉFLEXION</span>
+                <span>INNOVATION</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="articles" class="kinetic-journal journal-white-theme">
+    <div class="kj-header reveal-on-scroll">
+        <span class="kj-eyebrow">ARCHIVES SCIENTIFIQUES</span>
+        <h2 class="kj-main-title">PUBLICATIONS & <em>ÉDITOS</em></h2>
+    </div>
+    <div class="kj-container">
+        @if (Model != null && Model.Any())
+        {
+            <div class="kj-grid">
+                @{ int i = 1; }
+                @foreach (var art in Model)
+                {
+                    <article class="kj-panel reveal-on-scroll">
+                        <div class="kj-bg-wrap">
+                            <div class="kj-bg" style="background-image: url('@art.CoverImageUrl')"></div>
+                        </div>
+                        <div class="kj-overlay"></div>
+                        <div class="kj-content">
+                            <div class="kj-top">
+                                <span class="kj-num">#0@i</span>
+                                <span class="kj-cat">@art.CategoryName</span>
+                            </div>
+                            <div class="kj-middle">
+                                <h3 class="kj-title">@art.Title</h3>
+                                <p class="kj-desc">@art.Description</p>
+                            </div>
+                            <div class="kj-bottom">
+                                <a href="/Home/Article/@art.Id" class="kj-link">EXPLORER L'ANALYSE ↗</a>
+                            </div>
+                        </div>
+                        <div class="kj-scanner-line"></div>
+                    </article>
+                    i++;
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-journal-state reveal-on-scroll">
+                <div class="empty-ornament"></div>
+                <h3 style="font-family:var(--font-serif); font-size: 2.5rem; margin-bottom: 1.5rem;">DÉBUT DU VOYAGE ÉDITORIAL</h3>
+                <p style="max-width: 600px; margin: 0 auto 3rem;">Nos premiers articles sont en cours de rédaction. Le Professeur Ramzi Moatemri partagera bientôt ses expertises ici.</p>
+                <a href="/" class="luxury-pill-btn">RETOURNER À L'ACCUEIL</a>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="artistic-cta reveal-on-scroll">
+    <div class="cta-video-wrap">
+        <video autoplay muted loop playsinline class="cta-bg-video">
+            <source src="/videos/v2.mp4" type="video/mp4">
+        </video>
+        <div class="cta-video-overlay"></div>
+    </div>
+    <div class="cta-inner">
+        <span class="cta-eyebrow">EXCELLENCE SIGNATURE</span>
+        <div class="cta-ornament"></div>
+        <h2 class="cta-title">VOTRE MÉTAMORPHOSE <br> SIGNATURE</h2>
+        <p class="cta-subtitle">Commencez votre parcours vers l'harmonie esthétique par une consultation clinique personnalisée.</p>
+        <a asp-controller="Home" asp-action="Contact" class="luxury-pill-btn">PRENDRE RENDEZ-VOUS</a>
+    </div>
+</section>
+
+<footer class="monolith-footer">
+    <div class="mf-background-text">DR. MOATEMRI</div>
+    
+    <div class="mf-container">
+        <div class="mf-main reveal-on-scroll">
+            <div class="mf-brand">
+                <div class="mf-logo-wrap">
+                    <span class="mf-logo">DR RAMZI MOATEMRI</span>
+                    <span class="mf-tagline">CHIRURGIEN MAXILLO-FACIAL ET ESTHÉTIQUE</span>
+                </div>
+                <div class="mf-info-grid">
+                    <div class="mf-info-block">
+                        <span class="mf-label">LOCALISATION</span>
+                        <p>Immeuble Misk Elil<br>4ème Étage, Bureau N°42<br>Khézama Est, Sousse</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">CONTACT DIRECT</span>
+                        <p>T. +216 98 643 807<br>E. moatemri_ramzi@yahoo.fr</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">HORAIRES</span>
+                        <p>LUN — VEN : 09H - 18H<br>SAM : 09H - 13H</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="mf-nav-grid">
+                <div class="mf-nav-col">
+                    <span class="mf-label">EXPLORATION</span>
+                    <ul class="mf-list">
+                        <li><a href="/Home/About">LE DOCTEUR</a></li>
+                        <li><a href="/#traitements">COLLECTIONS</a></li>
+                        <li><a href="/Home/Results">RÉSULTATS</a></li>
+                        <li><a href="/#expertise">EXPERTISE</a></li>
+                        <li><a asp-controller="Home" asp-action="Journal">JOURNAL SCIENTIFIQUE</a></li>
+                    </ul>
+                </div>
+                <div class="mf-nav-col">
+                    <span class="mf-label">SUIVRE</span>
+                    <ul class="mf-list">
+                        <li><a href="#">INSTAGRAM</a></li>
+                        <li><a href="#">FACEBOOK</a></li>
+                        <li><a href="#">LINKEDIN</a></li>
+                        <li><a href="#">TIKTOK</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="mf-bottom reveal-on-scroll">
+            <div class="mf-legal">
+                <span>© 2026 DR RAMZI MOATEMRI</span>
+                <span class="mf-divider"></span>
+                <span>DESIGN PAR RADIANCE EDITORIAL</span>
+            </div>
+            <div class="mf-management">DIRECTION MÉDICALE : DR RAMZI MOATEMRI</div>
+        </div>
+    </div>
+</footer>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const parallaxBg = document.querySelector('.hero-parallax-bg');
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    });
+</script>

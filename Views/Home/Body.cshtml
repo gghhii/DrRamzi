@@ -1,0 +1,668 @@
+@model IEnumerable<DrAshrafMellouli.Models.Treatment>
+@{
+    ViewData["Title"] = "Corps & Peau - Dr Ramzi Moatemri";
+}
+
+
+<!-- REFINED DIORAMA HERO: BODY (TEXT LEFT / IMAGE RIGHT) -->
+<section id="hero" class="diorama-hero-reversed">
+    <!-- Background Ambient Elements -->
+    <div class="diorama-ambient">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-grid"></div>
+    </div>
+
+    <div class="diorama-container">
+        <!-- Large Background Signature -->
+        <div class="diorama-signature">CORPS</div>
+
+        <div class="diorama-stage-reversed">
+            <!-- Left Side: Narrative Content -->
+            <div class="stage-content-left reveal-on-scroll">
+                <div class="content-clean-block">
+                    <header class="content-header">
+                        <span class="h-line"></span>
+                        <span class="h-tag">PROTOCOLE CORPOREL HAUTE PRÉCISION</span>
+                    </header>
+                    
+                    <h1 class="diorama-title">
+                        HARMONIE <br>
+                        <span class="italic-accent">CORPORELLE</span>
+                    </h1>
+
+                    <div class="diorama-description">
+                        <p>Affinage non invasif de la silhouette et raffermissement des tissus utilisant les technologies de remodelage corporel les plus avancées au monde.</p>
+                    </div>
+
+                    <div class="diorama-actions">
+                        <a href="#protocols" class="btn-diorama">
+                            <span class="btn-text">DÉCOUVRIR LE PROTOCOLE</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Image Layer -->
+            <div class="stage-visual-wrap-right reveal-on-scroll">
+                <img src="/images/t3.png" alt="Body Architecture" class="stage-img">
+                <div class="stage-scan-line"></div>
+                <div class="stage-frame-corners"></div>
+
+                <!-- CLINICAL ECG SIGNAL ANIMATION -->
+                <div class="clinical-ecg-overlay">
+                    <svg viewBox="0 0 800 100" preserveAspectRatio="none" class="ecg-svg">
+                        <polyline points="0,50 350,50 365,20 380,80 395,20 410,50 800,50" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+                        <polyline points="0,50 350,50 365,20 380,80 395,20 410,50 800,50" fill="none" stroke="var(--color-gold)" stroke-width="8" opacity="0.6" style="filter: blur(4px);" class="ecg-trace" />
+                        <polyline points="0,50 350,50 365,20 380,80 395,20 410,50 800,50" fill="none" stroke="#ffffff" stroke-width="3" class="ecg-trace-core" />
+                    </svg>
+                </div>
+
+                <!-- HUD Data Points on Image -->
+                <div class="floating-data d-top" style="top: 15%; right: 10%;">
+                    <div class="d-dot"></div>
+                    <div class="d-info">
+                        <span class="d-label">MORPHOLOGIE</span>
+                        <span class="d-val">v.2.8.1</span>
+                    </div>
+                </div>
+                <div class="floating-data d-bottom" style="bottom: 15%; left: 10%;">
+                    <div class="d-dot"></div>
+                    <div class="d-info">
+                        <span class="d-label">SYMMÉTRIE</span>
+                        <span class="d-val">ULTRA-H</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="protocols" class="white-cards-section section-padding bg-white">
+    <div class="cards-container">
+        <header class="white-matrix-header reveal-on-scroll">
+            <h2 class="wm-title">
+                TRAITEMENTS <br>
+                <span class="italic-serif">CORPORELS</span>
+            </h2>
+            <div class="wm-line"></div>
+        </header>
+
+        <div class="cards-grid">
+            @if (Model != null && Model.Any())
+            {
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <div class="editorial-card reveal-on-scroll" style="transition-delay: @(0.1 * (i-1))s;">
+                        <div class="card-visual">
+                            <img src="@item.ImageUrl" alt="@item.Title">
+                            <span class="card-num">@i.ToString("D2")</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-name">@item.Title</h3>
+                            <p class="card-desc">@item.Description</p>
+                            @if (!string.IsNullOrEmpty(item.ProtocolDetails))
+                            {
+                                <a href="/Home/Treatment/@item.Id" class="card-link">CONSULTER LE PROTOCOLE →</a>
+                            }
+                        </div>
+                    </div>
+                    i++;
+                }
+            }
+            else
+            {
+                <!-- Fallback to static if no data in DB yet -->
+                <div class="editorial-card reveal-on-scroll">
+                    <div class="card-visual">
+                        <img src="/images/medical_body.png" alt="Peau">
+                        <span class="card-num">01</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-name">TRAITEMENT MÉDICAL ET CHIRURGICAL DE LA PEAU</h3>
+                        <p class="card-desc">Prise en charge complète des pathologies cutanées complexes.</p>
+                        <a href="#" class="card-link">CONSULTER LE PROTOCOLE →</a>
+                    </div>
+                </div>
+
+                <div class="editorial-card reveal-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="card-visual">
+                        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2070&auto=format&fit=crop" alt="Pédiatrie">
+                        <span class="card-num">02</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-name">DERMATOLOGIE PÉDIATRIQUE</h3>
+                        <p class="card-desc">Soins dermatologiques adaptés aux nourrissons et enfants.</p>
+                        <a href="#" class="card-link">CONSULTER LE PROTOCOLE →</a>
+                    </div>
+                </div>
+
+                <div class="editorial-card reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="card-visual">
+                        <img src="https://images.unsplash.com/photo-1579154341098-e4e158cc7f55?q=80&w=2070&auto=format&fit=crop" alt="MST">
+                        <span class="card-num">03</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-name">TRAITEMENT DES MALADIES SEXUELLEMENT TRANSMISSIBLES</h3>
+                        <p class="card-desc">Diagnostic et traitement confidentiel des MST.</p>
+                        <a href="#" class="card-link">CONSULTER LE PROTOCOLE →</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="expertise" class="tech-metrics-section">
+    <div class="gallery-container">
+        <header class="gallery-header reveal-on-scroll">
+            <h2 class="gallery-title">TECHNOLOGIES <br> <em>& APPAREILS</em></h2>
+            <div class="gallery-line"></div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card reveal-on-scroll">
+                <span class="metric-num">MESURE 01</span>
+                <h3 class="metric-title">PRÉCISION THERMIQUE</h3>
+                <p class="metric-desc">Utilisation de changements de température contrôlés pour cibler sélectivement le tissu adipeux sans affecter la peau environnante.</p>
+            </div>
+            <div class="metric-card reveal-on-scroll" style="transition-delay: 0.1s;">
+                <span class="metric-num">MESURE 02</span>
+                <h3 class="metric-title">TECH BIOSCULPT</h3>
+                <p class="metric-desc">Systèmes avancés de HIFU et de radiofréquence qui travaillent en synergie pour raffermir les couches dermiques et dissoudre les graisses.</p>
+            </div>
+            <div class="metric-card reveal-on-scroll" style="transition-delay: 0.2s;">
+                <span class="metric-num">MESURE 03</span>
+                <h3 class="metric-title">RÉSULTATS BASÉS SUR LES DONNÉES</h3>
+                <p class="metric-desc">Chaque plan de traitement s'appuie sur des mesures précises et une cartographie clinique de votre silhouette.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="results" class="transformation-showcase section-padding">
+    <div class="showcase-container">
+        <header class="showcase-header reveal-on-scroll">
+            <span class="showcase-label">ÉTUDE DE CAS: #B-712</span>
+            <h2 class="showcase-title">MORPHOLOGIE <br> <em>REDESSINÉE</em></h2>
+        </header>
+
+        <div class="cinematic-reveal reveal-on-scroll">
+            <img src="/images/body_transformation.png" alt="Body Transformation">
+            <div class="reveal-labels">
+                <span class="reveal-label">AVANT</span>
+                <span class="reveal-label">APRÈS</span>
+            </div>
+        </div>
+
+        <div class="showcase-footer reveal-on-scroll">
+            <div class="footer-metadata">
+                <span class="metadata-item">PROTOCOLE: <span>CRYOLIPOLYSE 360°</span></span>
+                <span class="metadata-item">CIBLES: <span>ABDOMEN & TAILLE</span></span>
+                <span class="metadata-item">RÉSULTAT: <span>DÉFINITIF</span></span>
+            </div>
+            <a href="/Home/Results" class="showcase-cta">EXPLOREZ LES CASES STUDIES →</a>
+        </div>
+    </div>
+</section>
+
+<section id="journey" class="procedure-journey">
+    <div class="journey-container">
+        <header class="gallery-header reveal-on-scroll">
+            <h2 class="gallery-title">DÉROULEMENT <br> <em>DU SOIN</em></h2>
+            <div class="gallery-line"></div>
+        </header>
+
+        <div class="journey-steps">
+            <div class="journey-step reveal-on-scroll">
+                <div class="step-line"></div>
+                <div class="step-dot"></div>
+                <span class="step-label">PHASE 01</span>
+                <h3 class="step-title">DIAGNOSTIC</h3>
+                <p class="step-text">Analyse complète de la densité tissulaire, de la répartition des graisses et des marqueurs d'élasticité cutanée.</p>
+            </div>
+            <div class="journey-step reveal-on-scroll" style="transition-delay: 0.1s;">
+                <div class="step-line"></div>
+                <div class="step-dot"></div>
+                <span class="step-label">PHASE 02</span>
+                <h3 class="step-title">CALIBRATION</h3>
+                <p class="step-text">Ajustement de nos dispositifs médicaux aux profondeurs et intensités spécifiques requises pour vos objectifs.</p>
+            </div>
+            <div class="journey-step reveal-on-scroll" style="transition-delay: 0.2s;">
+                <div class="step-line"></div>
+                <div class="step-dot"></div>
+                <span class="step-label">PHASE 03</span>
+                <h3 class="step-title">TRAITEMENT</h3>
+                <p class="step-text">Application d'énergie photonique ou ultrasonique dans un environnement clinique relaxant.</p>
+            </div>
+            <div class="journey-step reveal-on-scroll" style="transition-delay: 0.3s;">
+                <div class="step-line"></div>
+                <div class="step-dot"></div>
+                <span class="step-label">PHASE 04</span>
+                <h3 class="step-title">AFFINAGE</h3>
+                <p class="step-text">Élimination métabolique naturelle des cellules traitées au cours des semaines suivantes, révélant votre nouvelle forme.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="artistic-cta reveal-on-scroll">
+    <div class="cta-video-wrap">
+        <video autoplay muted loop playsinline class="cta-bg-video">
+            <source src="/videos/v2.mp4" type="video/mp4">
+        </video>
+        <div class="cta-video-overlay"></div>
+    </div>
+    <div class="cta-inner">
+        <span class="cta-eyebrow">REMODELAGE CORPOREL</span>
+        <div class="cta-ornament"></div>
+        <h2 class="cta-title">REDÉFINISSEZ VOTRE <br> SILHOUETTE</h2>
+        <p class="cta-subtitle">Découvrez un remodelage corporel non invasif qui révèle votre forme la plus confiante, guidé par la précision clinique.</p>
+        <a asp-controller="Home" asp-action="Contact" class="luxury-pill-btn">PRENDRE RENDEZ-VOUS</a>
+    </div>
+</section>
+
+<footer class="monolith-footer">
+    <div class="mf-background-text">DR. MOATEMRI</div>
+    
+    <div class="mf-container">
+        <div class="mf-main reveal-on-scroll">
+            <div class="mf-brand">
+                <div class="mf-logo-wrap">
+                    <span class="mf-logo">DR RAMZI MOATEMRI</span>
+                    <span class="mf-tagline">CHIRURGIEN MAXILLO-FACIAL ET ESTHÉTIQUE</span>
+                </div>
+                <div class="mf-info-grid">
+                    <div class="mf-info-block">
+                        <span class="mf-label">LOCALISATION</span>
+                        <p>Immeuble Misk Elil<br>4ème Étage, Bureau N°42<br>Khézama Est, Sousse</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">CONTACT DIRECT</span>
+                        <p>T. +216 98 643 807<br>E. moatemri_ramzi@yahoo.fr</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">HORAIRES</span>
+                        <p>LUN — VEN : 09H - 18H<br>SAM : 09H - 13H</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="mf-nav-grid">
+                <div class="mf-nav-col">
+                    <span class="mf-label">EXPLORATION</span>
+                    <ul class="mf-list">
+                        <li><a href="/Home/About">LE DOCTEUR</a></li>
+                        <li><a href="/#traitements">COLLECTIONS</a></li>
+                        <li><a href="/Home/Results">RÉSULTATS</a></li>
+                        <li><a href="/#expertise">EXPERTISE</a></li>
+                        <li><a asp-controller="Home" asp-action="Journal">JOURNAL SCIENTIFIQUE</a></li>
+                    </ul>
+                </div>
+                <div class="mf-nav-col">
+                    <span class="mf-label">SUIVRE</span>
+                    <ul class="mf-list">
+                        <li><a href="#">INSTAGRAM</a></li>
+                        <li><a href="#">FACEBOOK</a></li>
+                        <li><a href="#">LINKEDIN</a></li>
+                        <li><a href="#">TIKTOK</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="mf-bottom reveal-on-scroll">
+            <div class="mf-legal">
+                <span>© 2026 DR RAMZI MOATEMRI</span>
+                <span class="mf-divider"></span>
+                <span>DESIGN PAR RADIANCE EDITORIAL</span>
+            </div>
+            <div class="mf-management">DIRECTION MÉDICALE : DR RAMZI MOATEMRI</div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* --- REFINED REVERSED DIORAMA HERO (TEXT LEFT / IMAGE RIGHT) --- */
+    .diorama-hero-reversed {
+        height: 100vh;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 120px;
+    }
+
+    .diorama-ambient {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .ambient-orb {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+
+    .orb-1 { top: -10%; left: -10%; }
+    .orb-2 { bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%); }
+
+    .ambient-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 100px 100px;
+        mask-image: radial-gradient(circle at center, black, transparent 80%);
+    }
+
+    .diorama-container {
+        width: 100%;
+        max-width: 1600px;
+        padding: 0 5%;
+        position: relative;
+        z-index: 10;
+    }
+
+    .diorama-signature {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--font-serif);
+        font-size: 25vw;
+        color: rgba(255,255,255,0.02);
+        white-space: nowrap;
+        pointer-events: none;
+        letter-spacing: -0.05em;
+        z-index: 0;
+    }
+
+    .diorama-stage-reversed {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        height: 600px;
+        gap: 10%;
+    }
+
+    .stage-content-left {
+        position: relative;
+        z-index: 20;
+        width: 30%;
+        padding-right: 0;
+    }
+
+    .content-clean-block {
+        padding: 0;
+    }
+
+    .content-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 2.5rem;
+    }
+
+    .h-line { width: 30px; height: 1px; background: var(--color-gold); }
+    .h-tag { font-size: 0.55rem; letter-spacing: 0.4em; color: rgba(255,255,255,0.5); font-weight: 700; }
+
+    .diorama-title {
+        font-family: var(--font-serif);
+        font-size: clamp(2.5rem, 4vw, 4.5rem);
+        line-height: 0.9;
+        margin-bottom: 2.5rem;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .diorama-title .italic-accent {
+        font-style: italic;
+        color: #fff;
+        font-weight: 300;
+        opacity: 0.9;
+    }
+
+    .diorama-description {
+        margin-bottom: 3.5rem;
+        max-width: 500px;
+    }
+
+    .diorama-description p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.6);
+        font-weight: 300;
+    }
+
+    .stage-visual-wrap-right {
+        position: relative;
+        width: 60%;
+        height: 100%;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stage-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.1);
+        transition: transform 2s var(--ease-aesthetic);
+    }
+
+    .stage-visual-wrap-right:hover .stage-img {
+        transform: scale(1.05);
+    }
+
+    .stage-scan-line {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+        animation: scanHorizontal 8s infinite linear;
+    }
+
+    @@keyframes scanHorizontal {
+        0% { left: -50%; }
+        100% { left: 100%; }
+    }
+
+    .stage-frame-corners::before, .stage-frame-corners::after {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--color-gold);
+        z-index: 5;
+    }
+
+    .stage-frame-corners::before { top: 20px; left: 20px; border-right: 0; border-bottom: 0; }
+    .stage-frame-corners::after { bottom: 20px; right: 20px; border-left: 0; border-top: 0; }
+
+    .btn-diorama {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        padding: 1.2rem 2.5rem;
+        background: #fff;
+        color: #000;
+        text-decoration: none;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        transition: all 0.4s var(--ease-aesthetic);
+    }
+
+    .btn-diorama:hover {
+        background: var(--color-gold);
+        transform: translateY(-5px);
+    }
+
+    /* Clinical ECG Animation */
+    .clinical-ecg-overlay {
+        position: absolute;
+        bottom: 30%;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        z-index: 25;
+        pointer-events: none;
+        overflow: visible;
+        background: linear-gradient(90deg, transparent, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 70%, transparent);
+    }
+
+    .ecg-svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .ecg-trace {
+        stroke-dasharray: 200 1500;
+        stroke-dashoffset: 1700;
+        animation: ecgSweep 4.5s linear infinite;
+    }
+
+    .ecg-trace-core {
+        stroke-dasharray: 200 1500;
+        stroke-dashoffset: 1700;
+        animation: ecgSweep 4.5s linear infinite;
+        filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px var(--color-gold));
+    }
+
+    @@keyframes ecgSweep {
+        to { stroke-dashoffset: 0; }
+    }
+
+    /* Floating Data Points */
+    .floating-data {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 30;
+    }
+
+    .d-dot {
+        width: 8px;
+        height: 8px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #fff;
+        animation: pulseData 2s infinite;
+    }
+
+    @@keyframes pulseData {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0.5; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .d-info {
+        display: flex;
+        flex-direction: column;
+        background: rgba(0,0,0,0.8);
+        backdrop-filter: blur(10px);
+        padding: 10px 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .d-label { font-size: 0.45rem; color: #fff; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; }
+    .d-val { font-size: 0.6rem; color: #fff; font-weight: 800; }
+
+    @@media (max-width: 1024px) {
+        .diorama-stage-reversed { flex-direction: column-reverse; height: auto; padding-top: 100px; }
+        .stage-visual-wrap-right { position: relative; width: 100%; aspect-ratio: 16/9; margin-left: 0; }
+        .stage-content-left { width: 100%; padding-right: 0; padding-top: 5rem; }
+        .diorama-signature { font-size: 30vw; top: 30%; }
+        .floating-data { display: none; }
+    }
+    /* --- CTA VIDEO BACKGROUND --- */
+    .artistic-cta {
+        position: relative;
+        overflow: hidden;
+        padding: 10rem 5%;
+        background: #000;
+    }
+
+    .cta-video-wrap {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    .cta-bg-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cta-video-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+    }
+
+    .cta-inner {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .cta-title {
+        text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    /* --- WHITE EDITORIAL CARDS --- */
+    .white-cards-section { padding: 15rem 0; background: #fff; }
+    .bg-white { background-color: #fff; }
+    .cards-container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+    
+    .white-matrix-header { margin-bottom: 8rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .wm-title { font-family: var(--font-serif); font-size: clamp(3.5rem, 6vw, 6rem); line-height: 0.85; color: #000; text-transform: uppercase; letter-spacing: -0.02em; }
+    .wm-title .italic-serif { font-style: italic; font-weight: 300; display: block; margin-top: 0.5rem; opacity: 0.8; }
+    .wm-line { width: 80px; height: 2px; background: #000; margin-top: 2.5rem; }
+    
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 4rem 3rem; }
+    
+    .editorial-card { background: #fdfdfd; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.5s ease, box-shadow 0.5s ease; display: flex; flex-direction: column; }
+    .editorial-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    
+    .card-visual { position: relative; aspect-ratio: 4/5; overflow: hidden; }
+    .card-visual img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); transition: transform 1.5s ease, filter 1.5s ease; }
+    .editorial-card:hover .card-visual img { transform: scale(1.05); filter: grayscale(0) contrast(1); }
+    
+    .card-num { position: absolute; top: 20px; left: 20px; background: #fff; color: #000; font-size: 0.6rem; font-weight: 800; padding: 8px 12px; letter-spacing: 0.2em; z-index: 2; border: 1px solid rgba(0,0,0,0.1); }
+    
+    .card-content { padding: 3rem 2.5rem; display: flex; flex-direction: column; flex: 1; }
+    .card-name { font-family: var(--font-serif); font-size: 1.8rem; color: #000; text-transform: uppercase; margin-bottom: 1.5rem; line-height: 1.2; transition: color 0.4s ease; }
+    .editorial-card:hover .card-name { color: #000; }
+    
+    .card-desc { font-size: 1rem; line-height: 1.7; color: rgba(0,0,0,0.6); font-weight: 300; margin-bottom: 2.5rem; flex: 1; }
+    
+    .card-link { font-size: 0.65rem; color: #000; letter-spacing: 0.2em; font-weight: 800; text-decoration: none; position: relative; display: inline-flex; align-items: center; align-self: flex-start; transition: all 0.4s ease; }
+    .card-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: #000; transition: width 0.4s ease; }
+    .editorial-card:hover .card-link { color: #000; transform: translateX(5px); }
+    .editorial-card:hover .card-link::after { width: 100%; }
+
+    @@media (max-width: 768px) {
+        .cards-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+</style>

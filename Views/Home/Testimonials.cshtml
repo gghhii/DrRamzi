@@ -1,0 +1,618 @@
+@model IEnumerable<DrAshrafMellouli.Models.Testimonial>
+@{
+    ViewData["Title"] = "Avis Patients - Dr Ramzi Moatemri";
+}
+
+<section id="hero" class="treatment-clinical-split">
+    <div class="clinical-split-sculpture">
+        <div class="clinical-data-column reveal-on-scroll">
+            <div class="data-badge">PROTOCOLE : VOIX</div>
+            <div class="data-readout">
+                <span>SATISFACTION : 99.8%</span>
+                <span>TYPE : ODYSSÉE DES PATIENTS</span>
+                <span>v1.2.0</span>
+            </div>
+            <h1 class="clinical-title">
+                ÉCHOS <br>
+                <span class="gold-italic">DES PATIENTS</span>
+            </h1>
+            <p class="clinical-lead">
+                Une collection authentique d'expériences de notre communauté mondiale. La véritable mesure de notre art médical.
+            </p>
+            <div class="clinical-abstract-mesh"></div>
+        </div>
+
+        <div class="clinical-visual-column">
+            <img class="clinical-portrait-img" src="/images/i7.png" alt="Patient Voices">
+            <div class="visual-scan-line"></div>
+            <div class="visual-topo-overlay"></div>
+            <div class="visual-corner-tags">
+                <span>HARMONIE</span>
+                <span>CONFIANCE</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="clinical-scroll-indicator">
+        <span class="scroll-label">LIRE LES PARCOURS</span>
+        <div class="scroll-monolith-line"></div>
+    </div>
+</section>
+
+<section id="voices" class="testi-section">
+    <div class="testi-container">
+        <div class="testi-label reveal-on-scroll">
+            <span class="testi-tag">TÉMOIGNAGES</span>
+            <h2 class="testi-heading">Ce que disent <em>nos patients</em></h2>
+            <p class="testi-sub">Des résultats authentiques, des expériences réelles.</p>
+        </div>
+
+        <div class="testi-grid">
+            @if (Model != null && Model.Any())
+            {
+                float delay = 0;
+                foreach (var item in Model)
+                {
+                    <div class="testi-card @(item.IsFeatured ? "testi-card--featured" : "") reveal-on-scroll" style="transition-delay:@(delay)s">
+                        @if (item.IsFeatured)
+                        {
+                            <div class="testi-featured-badge">★ ELITE</div>
+                        }
+                        <div class="testi-card-top">
+                            <div class="testi-avatar" style="background: @(item.IsFeatured ? "linear-gradient(135deg, #1a1a1a, #444)" : "linear-gradient(135deg, #ffffff, #e8d5b0)")">@item.Initials</div>
+                            <div class="testi-stars @(item.IsFeatured ? "testi-stars--gold" : "")">
+                                @for(int s=0; s<item.Rating; s++) { <text>★</text> }
+                            </div>
+                        </div>
+                        <blockquote class="testi-quote @(item.IsFeatured ? "testi-quote--featured" : "")">
+                            "@item.Content"
+                        </blockquote>
+                        <div class="testi-author">
+                            <span class="testi-name">@item.Name</span>
+                            <span class="testi-procedure">@item.Procedure</span>
+                        </div>
+                    </div>
+                    delay += 0.1f;
+                }
+            }
+            else
+            {
+                <!-- Fallback to static if no data -->
+                <div class="testi-card reveal-on-scroll">
+                    <div class="testi-card-top">
+                        <div class="testi-avatar" style="background: linear-gradient(135deg, #ffffff, #e8d5b0);">SL</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                    <blockquote class="testi-quote">
+                        "L'approche du Dr Moatemri est d'une finesse incroyable. Il ne cherche pas à transformer, mais à sublimer."
+                    </blockquote>
+                    <div class="testi-author">
+                        <span class="testi-name">Sophie Laurent</span>
+                        <span class="testi-procedure">Acide Hyaluronique</span>
+                    </div>
+                </div>
+
+                <div class="testi-card testi-card--featured reveal-on-scroll" style="transition-delay:0.1s">
+                    <div class="testi-featured-badge">★ ELITE</div>
+                    <div class="testi-card-top">
+                        <div class="testi-avatar" style="background: linear-gradient(135deg, #1a1a1a, #444);">ER</div>
+                        <div class="testi-stars testi-stars--gold">★★★★★</div>
+                    </div>
+                    <blockquote class="testi-quote testi-quote--featured">
+                        "Une vision architecturale de la beauté. Ma peau n'a jamais été aussi rayonnante."
+                    </blockquote>
+                    <div class="testi-author">
+                        <span class="testi-name">Elena Rizzi</span>
+                        <span class="testi-procedure">Laser Skin Resurfacing</span>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="testi-stats reveal-on-scroll">
+            <div class="testi-stat">
+                <span class="stat-number">99.8%</span>
+                <span class="stat-label">Taux de satisfaction</span>
+            </div>
+            <div class="testi-stat-divider"></div>
+            <div class="testi-stat">
+                <span class="stat-number">@((Model?.Count() ?? 0) + 242)+</span>
+                <span class="stat-label">Avis vérifiés</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="testi-stat">
+                <span class="stat-number">★ 5.0</span>
+                <span class="stat-label">Note moyenne</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="journey" class="clinical-blueprint-journey">
+    <div class="blueprint-grid"></div>
+    <div class="journey-container">
+        <header class="blueprint-header reveal-on-scroll">
+            <span class="bp-eyebrow">PROTOCOLE D'ACCUEIL</span>
+            <h2 class="bp-title">VOTRE PARCOURS À <em>MISK ELIL</em></h2>
+            <div class="bp-line"></div>
+        </header>
+
+        <div class="blueprint-steps">
+            <!-- Step 1 -->
+            <div class="bp-step reveal-on-scroll">
+                <div class="bp-num">01.</div>
+                <div class="bp-content">
+                    <h3 class="bp-step-title">IMMERSION</h3>
+                    <p class="bp-step-text">Arrivée prestigieuse à l'Immeuble Misk Elil. Un accueil d'élite dans un cadre confidentiel et architectural au 4ème étage.</p>
+                </div>
+                <div class="bp-marker"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bp-step reveal-on-scroll" style="transition-delay: 0.1s;">
+                <div class="bp-num">02.</div>
+                <div class="bp-content">
+                    <h3 class="bp-step-title">ANALYSE</h3>
+                    <p class="bp-step-text">Consultation approfondie en Bureau N°42. Nous définissons vos objectifs à travers une cartographie esthétique précise.</p>
+                </div>
+                <div class="bp-marker"></div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bp-step reveal-on-scroll" style="transition-delay: 0.2s;">
+                <div class="bp-num">03.</div>
+                <div class="bp-content">
+                    <h3 class="bp-step-title">PRÉCISION</h3>
+                    <p class="bp-step-text">Exécution du protocole signature par le Dr Moatemri, alliant science chirurgicale et finesse artistique.</p>
+                </div>
+                <div class="bp-marker"></div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="bp-step reveal-on-scroll" style="transition-delay: 0.3s;">
+                <div class="bp-num">04.</div>
+                <div class="bp-content">
+                    <h3 class="bp-step-title">SYNERGIE</h3>
+                    <p class="bp-step-text">Suivi post-procédure personnalisé pour garantir l'harmonie durable et la satisfaction absolue de nos patients.</p>
+                </div>
+                <div class="bp-marker"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="artistic-cta reveal-on-scroll">
+    <div class="cta-video-wrap">
+        <video autoplay muted loop playsinline class="cta-bg-video">
+            <source src="/videos/v2.mp4" type="video/mp4">
+        </video>
+        <div class="cta-video-overlay"></div>
+    </div>
+    <div class="cta-inner">
+        <span class="cta-eyebrow">EXCELLENCE SIGNATURE</span>
+        <div class="cta-ornament"></div>
+        <h2 class="cta-title">REJOIGNEZ NOS <br> PATIENTS SATISFAITS</h2>
+        <p class="cta-subtitle">Commencez votre voyage vers l'harmonie esthétique avec une consultation clinique personnalisée.</p>
+        <a asp-controller="Home" asp-action="Contact" class="luxury-pill-btn">PRENDRE RENDEZ-VOUS</a>
+    </div>
+</section>
+
+<footer class="monolith-footer">
+    <div class="mf-background-text">DR. MOATEMRI</div>
+    
+    <div class="mf-container">
+        <div class="mf-main reveal-on-scroll">
+            <div class="mf-brand">
+                <div class="mf-logo-wrap">
+                    <span class="mf-logo">DR RAMZI MOATEMRI</span>
+                    <span class="mf-tagline">CHIRURGIE MAXILLO-FACIALE & ESTHÉTIQUE</span>
+                </div>
+                <div class="mf-info-grid">
+                    <div class="mf-info-block">
+                        <span class="mf-label">LOCALISATION</span>
+                        <p>Immeuble Misk Elil<br>4ème Étage, Bureau N°42<br>Khézama Est, Sousse</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">CONTACT DIRECT</span>
+                        <p>T. +216 98 643 807<br>E. moatemri_ramzi@yahoo.fr</p>
+                    </div>
+                    <div class="mf-info-block">
+                        <span class="mf-label">HORAIRES</span>
+                        <p>LUN — VEN : 09H - 18H<br>SAM : 09H - 13H</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="mf-nav-grid">
+                <div class="mf-nav-col">
+                    <span class="mf-label">EXPLORATION</span>
+                    <ul class="mf-list">
+                        <li><a href="/Home/About">LE DOCTEUR</a></li>
+                        <li><a href="/#traitements">COLLECTIONS</a></li>
+                        <li><a href="/Home/Results">RÉSULTATS</a></li>
+                        <li><a href="/#expertise">EXPERTISE</a></li>
+                        <li><a asp-controller="Home" asp-action="Journal">JOURNAL SCIENTIFIQUE</a></li>
+                    </ul>
+                </div>
+                <div class="mf-nav-col">
+                    <span class="mf-label">SUIVRE</span>
+                    <ul class="mf-list">
+                        <li><a href="#">INSTAGRAM</a></li>
+                        <li><a href="#">FACEBOOK</a></li>
+                        <li><a href="#">LINKEDIN</a></li>
+                        <li><a href="#">TIKTOK</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="mf-bottom reveal-on-scroll">
+            <div class="mf-legal">
+                <span>© 2026 DR RAMZI MOATEMRI</span>
+                <span class="mf-divider"></span>
+                <span>DESIGN PAR RADIANCE EDITORIAL</span>
+            </div>
+            <div class="mf-management">DIRECTION MÉDICALE : DR RAMZI MOATEMRI</div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* ===== TESTIMONIALS SECTION ===== */
+    .testi-section {
+        background: #ffffff;
+        padding: 9rem 0 8rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .testi-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 5%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .testi-label {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .testi-tag {
+        display: inline-block;
+        font-family: var(--font-sans, 'Inter', sans-serif);
+        font-size: 0.6rem;
+        letter-spacing: 0.3em;
+        color: #000;
+        border: 1px solid rgba(0,0,0,0.1);
+        padding: 6px 18px;
+        margin-bottom: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .testi-heading {
+        font-family: var(--font-serif, 'Cormorant Garamond', serif);
+        font-size: clamp(2.5rem, 5vw, 3.8rem);
+        color: #000;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+    }
+
+    .testi-heading em {
+        color: rgba(0,0,0,0.4);
+        font-style: italic;
+    }
+
+    .testi-sub {
+        font-family: var(--font-sans, 'Inter', sans-serif);
+        font-size: 0.9rem;
+        color: rgba(0,0,0,0.5);
+        letter-spacing: 0.05em;
+    }
+
+    .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 5rem;
+    }
+
+    .testi-card {
+        background: #fcfcfc;
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 2px;
+        padding: 36px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transition: transform 0.5s cubic-bezier(0.19,1,0.22,1),
+                    border-color 0.4s ease,
+                    box-shadow 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .testi-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(0,0,0,0.1);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+    }
+
+    .testi-card--featured {
+        background: #000;
+        border-color: #000;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .testi-featured-badge {
+        position: absolute;
+        top: -1px; right: 20px;
+        background: #000;
+        color: #fff;
+        font-size: 0.45rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        padding: 5px 12px;
+        text-transform: uppercase;
+    }
+
+    .testi-card--featured .testi-featured-badge {
+        background: #fff;
+        color: #000;
+    }
+
+    .testi-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .testi-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-sans, 'Inter', sans-serif);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.05em;
+        flex-shrink: 0;
+    }
+
+    .testi-stars {
+        font-size: 0.75rem;
+        color: rgba(0,0,0,0.1);
+        letter-spacing: 2px;
+    }
+
+    .testi-card--featured .testi-stars {
+        color: rgba(255,255,255,0.2);
+    }
+
+    .testi-stars--gold {
+        color: #000;
+    }
+
+    .testi-card--featured .testi-stars--gold {
+        color: #fff;
+    }
+
+    .testi-quote {
+        font-family: var(--font-serif, 'Cormorant Garamond', serif);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: rgba(0,0,0,0.7);
+        font-style: italic;
+        margin: 0;
+        flex: 1;
+        position: relative;
+        padding-left: 18px;
+        border-left: 2px solid rgba(0,0,0,0.1);
+    }
+
+    .testi-card--featured .testi-quote {
+        color: rgba(255,255,255,0.8);
+        border-left-color: #fff;
+    }
+
+    .testi-author {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .testi-card--featured .testi-author {
+        border-top-color: rgba(255,255,255,0.1);
+    }
+
+    .testi-name {
+        font-family: var(--font-serif, 'Cormorant Garamond', serif);
+        font-size: 1.1rem;
+        color: #000;
+        letter-spacing: -0.01em;
+    }
+
+    .testi-card--featured .testi-name {
+        color: #fff;
+    }
+
+    .testi-procedure {
+        font-family: var(--font-sans, 'Inter', sans-serif);
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        color: rgba(0,0,0,0.4);
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .testi-card--featured .testi-procedure {
+        color: #fff;
+    }
+
+    .testi-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f9f9f9;
+        border: 1px solid rgba(0,0,0,0.05);
+        padding: 40px 60px;
+        border-radius: 2px;
+    }
+
+    .testi-stat { flex: 1; text-align: center; }
+    .stat-number { font-family: var(--font-serif); font-size: 3rem; color: #000; display: block; line-height: 1; }
+    .stat-label { font-size: 0.6rem; letter-spacing: 0.4em; color: rgba(0,0,0,0.4); }
+    .testi-stat-divider { width: 1px; height: 60px; background: rgba(0,0,0,0.1); }
+
+    /* ===== CLINICAL BLUEPRINT JOURNEY ===== */
+    .clinical-blueprint-journey {
+        background: #fcfcfc;
+        padding: 12rem 0;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .blueprint-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+        background-size: 50px 50px;
+        pointer-events: none;
+    }
+
+    .blueprint-header { text-align: center; margin-bottom: 8rem; position: relative; z-index: 2; }
+    .bp-eyebrow { font-size: 0.6rem; letter-spacing: 0.5em; color: rgba(0,0,0,0.3); font-weight: 800; display: block; margin-bottom: 2rem; }
+    .bp-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4.5rem); color: #000; line-height: 1; }
+    .bp-title em { font-style: italic; color: rgba(0,0,0,0.4); }
+
+    .blueprint-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2px;
+        background: rgba(0,0,0,0.05);
+        position: relative;
+        z-index: 2;
+    }
+
+    .bp-step {
+        background: #fff;
+        padding: 4rem 3rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        transition: all 0.5s var(--ease-aesthetic);
+    }
+
+    .bp-step:hover {
+        background: #fafafa;
+        transform: translateY(-5px);
+    }
+
+    .bp-num {
+        font-family: var(--font-serif);
+        font-size: 3rem;
+        color: rgba(0,0,0,0.05);
+        line-height: 1;
+    }
+
+    .bp-step-title {
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.3em;
+        color: #000;
+        margin-bottom: 15px;
+    }
+
+    .bp-step-text {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        color: rgba(0,0,0,0.5);
+    }
+
+    .bp-marker {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        width: 6px;
+        height: 6px;
+        background: rgba(0,0,0,0.1);
+        border-radius: 50%;
+    }
+
+    .bp-step:hover .bp-marker {
+        background: var(--color-gold);
+        box-shadow: 0 0 15px var(--color-gold);
+    }
+
+    @@media (max-width: 1024px) {
+        .blueprint-steps { grid-template-columns: 1fr; }
+    }
+
+    /* CTA Section with Video Support */
+    .artistic-cta {
+        position: relative;
+        overflow: hidden;
+        padding: 10rem 5%;
+        background: #000;
+    }
+
+    .cta-video-wrap { position: absolute; inset: 0; z-index: 1; }
+    .cta-bg-video { width: 100%; height: 100%; object-fit: cover; }
+    .cta-video-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6)); }
+
+    .cta-inner { position: relative; z-index: 10; text-align: center; max-width: 800px; margin: 0 auto; }
+    .cta-eyebrow { font-size: 0.6rem; letter-spacing: 0.5em; color: rgba(255,255,255,0.5); display: block; margin-bottom: 2rem; font-weight: 700; }
+    .cta-ornament { width: 1px; height: 40px; background: rgba(255,255,255,0.2); margin: 0 auto 2rem; }
+    .cta-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
+    .cta-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.6); margin-bottom: 3rem; font-weight: 300; }
+
+    .luxury-pill-btn {
+        display: inline-block;
+        padding: 1.2rem 3.5rem;
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+        text-decoration: none;
+        font-family: var(--font-sans, 'Inter', sans-serif);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    .luxury-pill-btn:hover { background: #fff; color: #000; }
+
+    @@media (max-width: 1024px) {
+        .testi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @@media (max-width: 640px) {
+        .testi-grid { grid-template-columns: 1fr; }
+        .testi-stats { flex-direction: column; gap: 30px; padding: 40px 30px; }
+        .testi-stat-divider { display: none; }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    });
+</script>
