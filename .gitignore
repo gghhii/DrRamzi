@@ -1,0 +1,19 @@
+# Build folders
+bin/
+obj/
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+
+# Local configurations containing passwords
+appsettings.Development.json
+appsettings.local.json
+usersecrets.json
+
+# IDE settings
+.vs/
+.vscode/
+*.user
+*.suo
