@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DrAshrafMellouli.Models.AppDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+           .ConfigureWarnings(w => w.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning)));
 
 builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(60);
@@ -19,11 +20,11 @@ var app = builder.Build();
 
 app.UseSession();
 
-// Auto-apply migrations on startup
+// Ensure the database schema is created on startup
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<DrAshrafMellouli.Models.AppDbContext>();
-    db.Database.Migrate();
+    db.Database.EnsureCreated();
 }
 
 
